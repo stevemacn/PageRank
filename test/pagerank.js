@@ -12,11 +12,12 @@ describe('kmeans', function () {
 
 
         var nodeMatrix = [
-            [1,2],[],[0,1,4],[4,5],[3,4],[3]
+            [1,2],[],[0,1,4],[4,5],[3,5],[3]
         ]
 
         Pagerank(nodeMatrix, linkProb, tolerance, function (err, res) {
-            console.log("DONE")
+            console.log("____RESULTS____")
+            console.log(res)
             //assert.equals(err, null)
         })
     

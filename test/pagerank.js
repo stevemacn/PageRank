@@ -12,7 +12,7 @@ describe('kmeans', function () {
 
 
         var nodeMatrix = [
-            [2,3],[],[1,2,5],[5,6],[4,5],[4]
+            [1,2],[],[0,1,4],[4,5],[3,4],[3]
         ]
 
         Pagerank(nodeMatrix, linkProb, tolerance, function (err, res) {

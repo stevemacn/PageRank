@@ -1,0 +1,21 @@
+{
+    "name": "pagerank"
+    , "description": "PageRank library for node.js"
+    , "version": "0.0.1"
+    , "author": "Stephen MacNeil"
+    , "keywords": [ "pagerank", "graph" ]
+    , "dependencies": { 
+    }
+    , "devDependencies": {
+        "mocha": "latest"
+    }
+    , "engines": { "node": "latest" }
+    , "main": "./lib/kmeans"
+    , "repository": {
+        "type": "git"
+        , "url": "http://github.com/stevemacn/pagerank.git"
+    }
+    , "scripts": {
+        "test": "mocha -t 30000 -R spec"
+    }
+}

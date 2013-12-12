@@ -6,7 +6,7 @@ var assert = require('assert')
 describe('kmeans', function () {
 
     linkProb = 0.85 //Larger numbers (0.85) provide lower chance of random links 
-    tolerance = 0.001 //accuracy at which we terminate 
+    tolerance = 0.0001 //accuracy at which we terminate 
 
     it('correctly ranks nodes', function (done) {
 
@@ -14,6 +14,13 @@ describe('kmeans', function () {
         var nodeMatrix = [
             [1,2],[],[0,1,4],[4,5],[3,5],[3]
         ]
+
+
+        var nodeMatrix = [
+            [1],[0,2],[0,3,4],[4,5],[2,6],[0,6],[3]
+        ]
+
+
 
         Pagerank(nodeMatrix, linkProb, tolerance, function (err, res) {
             console.log("____RESULTS____")

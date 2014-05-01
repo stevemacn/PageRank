@@ -7,7 +7,8 @@
     , "dependencies": { 
     }
     , "devDependencies": {
-        "mocha": "latest"
+        "mocha": "latest",
+        "should":"latest"
     }
     , "engines": { "node": "latest" }
     , "main": "./lib/kmeans"

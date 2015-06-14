@@ -39,7 +39,7 @@ describe('Page rank', function () {
         done()
     });
 
-    it('correctly ranks nodes with string keys', function (done) {
+    it('correctly ranks nodes with non-coercable hash keys', function (done) {
         var nodeHash={
             "zero":["one"],
             "one":["zero","two"],
@@ -61,11 +61,53 @@ describe('Page rank', function () {
         };
 
         Pagerank(nodeHash, linkProb, tolerance, function (err, res) {
+            var k;
             should.not.exist(err)
             should.exist(res)
             res.should.be.instanceof(Object).and.not.instanceof(Array)
             Object.keys(res).should.have.lengthOf(7)
-            res.should.eql(expectedHashResponse)
+            for(k in res) {
+                expectedFloor=Math.floor(expectedHashResponse[k]*10000)-(tolerance*10000);
+                expectedCeil=Math.floor(expectedHashResponse[k]*10000)+(tolerance*10000);
+                (Math.floor(res[k]*10000)).should.be.within(expectedFloor, expectedCeil);
+            }
+        });
+
+        done();
+    });
+
+    it('correctly ranks nodes with coercable hash keys', function (done) {
+        var nodeHash={
+            "0":["1"],
+            "1":["0","2"],
+            "2":["0","3","4"],
+            "3":["4","5"],
+            "4":["2","6"],
+            "5":["0","6"],
+            "6":["3"]
+        };
+
+        var expectedHashResponse={
+            "0":0.1751523680914745,
+            "1":0.17030808430632474,
+            "2":0.1505779562978131,
+            "3":0.1633947196406794,
+            "4":0.13353508156024055,
+            "5":0.09087132727586017,
+            "6":0.11680129518391424
+        };
+
+        Pagerank(nodeHash, linkProb, tolerance, function (err, res) {
+            var k;
+            should.not.exist(err)
+            should.exist(res)
+            res.should.be.instanceof(Object).and.not.instanceof(Array)
+            Object.keys(res).should.have.lengthOf(7)
+            for(k in res) {
+                expectedFloor=Math.floor(expectedHashResponse[k]*10000)-(tolerance*10000);
+                expectedCeil=Math.floor(expectedHashResponse[k]*10000)+(tolerance*10000);
+                (Math.floor(res[k]*10000)).should.be.within(expectedFloor, expectedCeil);
+            }
         });
 
         done();
@@ -93,13 +135,18 @@ describe('Page rank', function () {
         };
 
         Pagerank(nodeHash, linkProb, tolerance, function (err, res) {
-
+            var expectedFloor, expectedCeil;
             should.not.exist(err);
             should.exist(res);
             res.should.be.instanceof(Object).and.not.instanceof(Array);
-            Object.keys(res).should.have.lengthOf(7);
-            res.should.eql(expectedHashResponse)
-        }, true);
+            //verify that each of the pagerank values is within tolerance range
+            for(k in res) {
+                expectedFloor=Math.floor(expectedHashResponse[k]*10000)-(tolerance*10000);
+                expectedCeil=Math.floor(expectedHashResponse[k]*10000)+(tolerance*10000);
+                (Math.floor(res[k]*10000)).should.be.within(expectedFloor, expectedCeil);
+            }
+            //res.should.eql(expectedHashResponse)
+        });
 
         done();
     });

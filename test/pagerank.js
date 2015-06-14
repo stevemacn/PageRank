@@ -113,7 +113,7 @@ describe('Page rank', function () {
         done();
     });
 
-    it('correctly ranks nodes with both integer and string keys', function (done) {
+    it('correctly ranks nodes with both coercable and non-coercable keys', function (done) {
         var nodeHash={
             "zero":["one"],
             "one":["zero","two"],

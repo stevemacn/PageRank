@@ -11,7 +11,7 @@
         "should":"latest"
     }
     , "engines": { "node": "latest" }
-    , "main": "./lib/kmeans"
+    , "main": "./lib/pagerank"
     , "repository": {
         "type": "git"
         , "url": "http://github.com/stevemacn/pagerank.git"

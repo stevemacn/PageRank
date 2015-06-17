@@ -1,5 +1,5 @@
 {
-    "name": "pagerank"
+    "name": "pagerank-js"
     , "description": "PageRank library for node.js"
     , "version": "0.0.1"
     , "author": "Stephen MacNeil"

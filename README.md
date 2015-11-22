@@ -1,12 +1,22 @@
 PageRank
 ========
 
-An implementation of the pagerank algorithm in Node.js
+An implementation of the pagerank algorithm in Node.js 
 
 Setup
 ---
 
     npm install package-js
+    
+Technical tutorial
+---
+
+The [code/tutorial][kt] for this library, created with [docco][doc],  explains the theory behind pagerank and shows how this library works!
+
+[kt]:http://stevemacn.github.io/tutorials/docs/pagerank.html
+[doc]:https://github.com/jashkenas/docco
+
+
 
 Usage
 ---
